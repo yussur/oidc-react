@@ -6,7 +6,9 @@ import {
   AuthContextProps,
 } from './AuthContextInterface';
 
-export const AuthContext = React.createContext<AuthContextProps | undefined>(undefined);
+export const AuthContext = React.createContext<AuthContextProps | undefined>(
+  undefined,
+);
 
 /**
  * @private
@@ -48,6 +50,7 @@ export const initUserManager = (props: AuthProviderProps): UserManager => {
     popupWindowFeatures,
     popupRedirectUri,
     popupWindowTarget,
+    metadata
   } = props;
   return new UserManager({
     authority,
@@ -63,6 +66,7 @@ export const initUserManager = (props: AuthProviderProps): UserManager => {
     popup_redirect_uri: popupRedirectUri,
     popupWindowTarget: popupWindowTarget,
     automaticSilentRenew,
+    metadata,
   });
 };
 

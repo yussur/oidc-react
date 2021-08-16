@@ -1,4 +1,4 @@
-import { UserManager, User } from 'oidc-client';
+import { UserManager, User, OidcMetadata } from 'oidc-client';
 export interface Location {
   search: string;
   hash: string;
@@ -32,6 +32,15 @@ export interface AuthProviderProps {
    * The URL of the OIDC/OAuth2 provider.
    */
   authority?: string;
+
+  metadata?: OidcMetadata;
+
+  //issuer?: string;
+  //authorization_endpoint?: string;
+  //userinfo_endpoint?: string;
+  //end_session_endpoint?: string;
+  //jwks_uri?: string;
+  //token_endpoint?: string;
   /**
    * Your client application's identifier as registered with the OIDC/OAuth2 provider.
    */
@@ -81,7 +90,7 @@ export interface AuthProviderProps {
    *
    * defaults to true
    */
-  loadUserInfo?:boolean;
+  loadUserInfo?: boolean;
   /**
    *  The features parameter to window.open for the popup signin window
    *
@@ -98,7 +107,7 @@ export interface AuthProviderProps {
    *
    * defaults to '_blank'
    */
-  popupWindowTarget?:string;
+  popupWindowTarget?: string;
   /**
    * On before sign in hook. Can be use to store the current url for use after signing in.
    *
@@ -124,7 +133,7 @@ export interface AuthContextProps {
   /**
    * Alias for userManager.signinPopup
    */
-  signInPopup: () => Promise<void>
+  signInPopup: () => Promise<void>;
   /**
    * Alias for removeUser
    */
