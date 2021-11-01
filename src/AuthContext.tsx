@@ -126,6 +126,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
       }
 
       const user = await userManager!.getUser();
+      console.log(user, 'userrrr');
       if ((!user || user.expired) && autoSignIn) {
         onBeforeSignIn && onBeforeSignIn();
         userManager.signinRedirect();
