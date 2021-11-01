@@ -118,7 +118,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
       if (hasCodeInUrl(location)) {
         console.log(userManager, 'yussurrrrrrr');
 
-        const user = await userManager.signinCallback();
+        const user = await userManager!.signinCallback();
 
         setUserData(user);
         setIsLoading(false);
