@@ -87,7 +87,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState<User | null>(null);
   const [userManager] = useState<UserManager>(initUserManager(props));
-
+  console.log(userManager, 'userManageruserManageruserManager');
   const signOutHooks = async (): Promise<void> => {
     setUserData(null);
     onSignOut && onSignOut();
@@ -114,7 +114,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
 
       console.log(userManager, 'userManageruserManageruserManager');
 
-      console.log('hellooooo');
+      console.log('hellooooo', location, hasCodeInUrl(location));
       if (hasCodeInUrl(location)) {
         const user = await userManager.signinCallback();
         setUserData(user);
