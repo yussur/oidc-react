@@ -112,6 +112,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({
        * Check if the user is returning back from OIDC.
        */
 
+      console.log(userManager, 'userManageruserManageruserManager');
+
       console.log('hellooooo');
       if (hasCodeInUrl(location)) {
         const user = await userManager.signinCallback();
@@ -125,6 +127,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
       if ((!user || user.expired) && autoSignIn) {
         onBeforeSignIn && onBeforeSignIn();
         userManager.signinRedirect();
+        console.log('hello there');
       } else if (isMountedRef.current) {
         setUserData(user);
         setIsLoading(false);
