@@ -115,10 +115,20 @@ export const AuthProvider: FC<AuthProviderProps> = ({
       console.log(userManager, 'userManageruserManageruserManager');
 
       console.log('hellooooo', location, hasCodeInUrl(location));
+
+      new UserManager({ response_mode: 'query' })
+        .signinRedirectCallback()
+        .then(function () {
+          console.log('pooooo');
+        })
+        .catch(function (e) {
+          console.error(e);
+          throw e;
+        });
       if (hasCodeInUrl(location)) {
         console.log(userManager, 'yussurrrrrrr');
 
-        const user = await userManager!.signinCallback();
+        const user = await userManager.signinCallback();
 
         setUserData(user);
         setIsLoading(false);
