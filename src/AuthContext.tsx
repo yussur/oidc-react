@@ -16,6 +16,7 @@ export const AuthContext = React.createContext<AuthContextProps | undefined>(
  * @param location
  */
 export const hasCodeInUrl = (location: Location): boolean => {
+  console.log(location, window.location);
   const searchParams = new URLSearchParams(location.search);
   const hashParams = new URLSearchParams(location.hash.replace('#', '?'));
 
@@ -50,7 +51,7 @@ export const initUserManager = (props: AuthProviderProps): UserManager => {
     popupWindowFeatures,
     popupRedirectUri,
     popupWindowTarget,
-    metadata
+    metadata,
   } = props;
   return new UserManager({
     authority,
